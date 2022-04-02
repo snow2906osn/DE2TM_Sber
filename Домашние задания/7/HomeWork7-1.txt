@@ -1,0 +1,32 @@
+#Задание 1. В домашней директории создайте каталог XXX_HW7_folder и переместитесь в него. Создайте в нем три файла, а также вложенный каталог inside. Скопируйте один файл из каталога XXX_HW7_folder в #каталог inside, а два оставшихся - переместите в inside. Файл, оставшийся в каталоге XXX_HW7_folder, переименуйте.
+
+#ls -laR
+#[de2tm@data-engineering snow_HW7_folder]$ ls -laR
+#.:
+#total 12
+#drwxrwxr-x 3 de2tm de2tm 4096 2022-02-13 13:37 .
+#drwx------ 7 de2tm de2tm 4096 2022-02-13 13:30 ..
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file4
+#drwxrwxr-x 2 de2tm de2tm 4096 2022-02-13 13:37 inside
+#
+#./inside:
+#total 8
+#drwxrwxr-x 2 de2tm de2tm 4096 2022-02-13 13:37 .
+#drwxrwxr-x 3 de2tm de2tm 4096 2022-02-13 13:37 ..
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:37 file1
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file2
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file3
+
+
+mkdir ~/snow_HW7_folder
+cd ~/snow_HW7_folder
+
+touch file1 file2 file3
+mkdir inside
+
+cp ./file1 ./inside
+mv ./file2 ./inside
+mv ./file3 ./inside
+
+mv ./file1 ./file4
+

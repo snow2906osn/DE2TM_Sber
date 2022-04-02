@@ -1,0 +1,74 @@
+#Задание 1. В домашней директории создайте каталог XXX_HW7_folder и переместитесь в него. Создайте в нем три файла, а также вложенный каталог inside. Скопируйте один файл из каталога XXX_HW7_folder в #каталог inside, а два оставшихся - переместите в inside. Файл, оставшийся в каталоге XXX_HW7_folder, переименуйте.
+
+#создайте каталог XXX_HW7_folder
+mkdir ~/snow_HW7_folder
+
+#переместитесь в него
+cd ~/snow_HW7_folder
+
+#Создайте в нем три файла, а также вложенный каталог inside
+touch file1 file2 file3
+mkdir inside
+
+ls -la
+#[de2tm@data-engineering snow_HW7_folder]$ ls -la
+#total 12
+#drwxrwxr-x 3 de2tm de2tm 4096 2022-02-13 13:34 .
+#drwx------ 7 de2tm de2tm 4096 2022-02-13 13:30 ..
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file1
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file2
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file3
+#drwxrwxr-x 2 de2tm de2tm 4096 2022-02-13 13:34 inside
+
+#Скопируйте один файл из каталога XXX_HW7_folder в каталог inside, а два оставшихся - переместите в inside.
+cp ./file1 ./inside
+mv ./file2 ./inside
+mv ./file3 ./inside
+
+ls -laR
+#[de2tm@data-engineering snow_HW7_folder]$ ls -laR
+#.:
+#total 12
+#drwxrwxr-x 3 de2tm de2tm 4096 2022-02-13 13:37 .
+#drwx------ 7 de2tm de2tm 4096 2022-02-13 13:30 ..
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file1
+#drwxrwxr-x 2 de2tm de2tm 4096 2022-02-13 13:37 inside
+#
+#./inside:
+#total 8
+#drwxrwxr-x 2 de2tm de2tm 4096 2022-02-13 13:37 .
+#drwxrwxr-x 3 de2tm de2tm 4096 2022-02-13 13:37 ..
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:37 file1
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file2
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file3
+
+#Файл, оставшийся в каталоге XXX_HW7_folder, переименуйте.
+mv ./file1 ./file4
+
+ls -la
+#[de2tm@data-engineering snow_HW7_folder]$ ls -la
+#total 12
+#drwxrwxr-x 3 de2tm de2tm 4096 2022-02-13 13:45 .
+#drwx------ 8 de2tm de2tm 4096 2022-02-13 13:45 ..
+#-rw-rw-r-- 1 de2tm de2tm    0 2022-02-13 13:34 file4
+
+#Задание 2. Найдите среди первых 50 строк файла HW7_log1.txt (директория ~/HW7) логи, содержащие даты. И выведите все полученные строки в файл T2.txt, расположенный в XXX_HW7_folder.
+
+cat ~/HW7/HW7_log1.txt |head -50|grep -e '-20[0-9][0-9]' -e '20[0-9][0-9]-' > ~/snow_HW7_folder/T2.txt
+
+#[de2tm@data-engineering ~]$ cat ./snow_HW7_folder/T2.txt 
+#10:00:19|Время запуска 19-06-2013 10:00:19
+#10:00:21|Дата апдейта в xtool: 2013-06-14
+#10:00:24|Проверка будет завершена: 2013-06-20
+
+
+#Задание 3. В директории XXX_HW7_folder создайте исполняемый bash-скрипт T2.sh, который будет считать кол-во слов в файле HW7_log1.txt и выводить в консоль.
+
+echo '#!/bin/bash' > ~/snow_HW7_folder/T2.sh
+echo 'cat ~/HW7/HW7_log1.txt|wc -w' >> ~/snow_HW7_folder/T2.sh
+chmod 550 ~/snow_HW7_folder/T2.sh
+~/snow_HW7_folder/T2.sh
+
+#[de2tm@data-engineering snow_HW7_folder]$ ~/snow_HW7_folder/T2.sh
+#1284
+

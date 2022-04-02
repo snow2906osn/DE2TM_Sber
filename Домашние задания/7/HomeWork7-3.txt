@@ -1,0 +1,10 @@
+#Задание 3. В директории XXX_HW7_folder создайте исполняемый bash-скрипт T2.sh, который будет считать кол-во слов в файле HW7_log1.txt и выводить в консоль.
+#[de2tm@data-engineering snow_HW7_folder]$ ~/snow_HW7_folder/T2.sh
+#1284
+
+echo '#!/bin/bash' > ~/snow_HW7_folder/T2.sh
+echo 'cat ~/HW7/HW7_log1.txt|wc -w' >> ~/snow_HW7_folder/T2.sh
+chmod 550 ~/snow_HW7_folder/T2.sh
+~/snow_HW7_folder/T2.sh
+
+
